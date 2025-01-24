@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Invalid email format");
         }
 
-        if (!preg_match("/^09\d{11}$/", $phone)) {
+        if (!preg_match("/^09\d{9}$/", $phone)) {
             die("Invalid phone number.");
         }
 
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             sleep(3);
 
-            header("Location: ../index.php");
+            header("Location: ../pages/dashboard.php");
 
             die();
 
