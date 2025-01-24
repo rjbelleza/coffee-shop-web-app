@@ -10,9 +10,10 @@
     <main>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
             <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
+            <input type="pwd" name="pwd" placeholder="Password">
             <button type="submit"> Log In </button>
         </form>
+        <?php require_once "../includes/login.inc.php"; ?>
     </main>
 </body>
 </html>
