@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Invalid email format");
         }
 
-        if (!preg_match("/^\d{11}$/", $phone)) {
+        if (!preg_match("/^09\d{11}$/", $phone)) {
             die("Invalid phone number.");
         }
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "Account successfully created";
 
-            sleep(5);
+            sleep(3);
 
             header("Location: ../index.php");
 
