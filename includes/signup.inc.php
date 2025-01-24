@@ -12,6 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $table = "users";
 
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            die("Invalid email format");
+        }
+
+        if (!preg_match("/^\d{11}$/", $phone)) {
+            die("Invalid phone number.");
+        }
+
         $query = "INSERT INTO $table (fullname, email, pwd, phone)
                   VALUES (:fullname, :email, :pwd, :phone);
         ";
@@ -34,6 +42,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "Account successfully created";
 
+            sleep(5);
+
+            header("Location: ../index.php");
+
             die();
 
         } catch (PDOException $e) {
@@ -41,6 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
     } else {
-        echo "All Fields are required!";
+        echo "All fields are required!";
     }
 }

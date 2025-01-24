@@ -12,7 +12,7 @@
             <input type="text" name="fullname" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="pwd" placeholder="Password" required>
-            <input type="tel" name="phone" placeholder="Phone Number" required>
+            <input type="tel" name="phone" placeholder="Phone Number" pattern="\d{11}" title="Phone number must be exactly 11 digits." required>
             <button type="submit"> Sign up </button>
         </form>
         <?php require_once "../includes/signup.inc.php" ?>

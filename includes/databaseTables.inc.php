@@ -7,9 +7,9 @@ $table = preg_replace('/[^a-zA-Z0-9_]/', '', $table);
 $createTable = "CREATE TABLE $table (
     id INT AUTO_INCREMENT PRIMARY KEY,
     fullname VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
     pwd VARCHAR(255) NOT NULL,
-    phone VARCHAR(255) NOT NULL
+    phone VARCHAR(255) UNIQUE NOT NULL
 );";
 
 try {
@@ -21,6 +21,8 @@ try {
 
     $pdo = null;
     $stmt = null;
+
+    echo "Table created successfully";
 
     die();
 
