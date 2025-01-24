@@ -9,12 +9,13 @@
 <body>
     <main>
         <form action=" <?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?> " method="POST">
-            <input type="text" name="fullName" placeholder="Full Name" required>
+            <input type="text" name="fullname" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="tel" name="fullName" placeholder="Phone Number" required>
+            <input type="password" name="pwd" placeholder="Password" required>
+            <input type="tel" name="phone" placeholder="Phone Number" required>
             <button type="submit"> Sign up </button>
         </form>
+        <?php require_once "../includes/signup.inc.php" ?>
     </main>
 </body>
 </html>
