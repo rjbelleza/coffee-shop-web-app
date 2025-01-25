@@ -22,6 +22,7 @@ $usersTable = "CREATE TABLE users (
                email VARCHAR(255) UNIQUE NOT NULL,
                pwd VARCHAR(255) NOT NULL,
                phone BIGINT NOT NULL,
+               role ENUM('customer', 'admin', 'courier') DEFAULT 'customer',
                created_at DATETIME DEFAULT current_timestamp()
 );";
 
