@@ -42,8 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "Account successfully created";
 
-            sleep(3);
-
             header("Location: ../pages/dashboard.php");
 
             die();
