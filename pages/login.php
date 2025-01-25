@@ -8,7 +8,7 @@
 </head>
 <body>
     <main>
-        <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
+        <form method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>">
             <input type="email" name="email" placeholder="Email">
             <input type="password" name="pwd" placeholder="Password">
             <button type="submit"> Log In </button>

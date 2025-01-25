@@ -1,31 +1,32 @@
 <?php
 
-$table = "users";
+require_once "databaseConnection.php";
 
-$table = preg_replace('/[^a-zA-Z0-9_]/', '', $table);
+$pdo->beginTransaction();
 
-$createTable = "CREATE TABLE $table (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fullname VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    pwd VARCHAR(255) NOT NULL,
-    phone VARCHAR(255) UNIQUE NOT NULL
+$usersTable = "CREATE TABLE users (
+               id INT AUTO_INCREMENT PRIMARY KEY,
+               fullname VARCHAR(255) NOT NULL,
+               email VARCHAR(255) UNIQUE NOT NULL,
+               pwd VARCHAR(255) NOT NULL,
+               created_at DATETIME DEFAULT current_timestamp()
 );";
 
-try {
+$productsTable = "CREATE TABLE products (
+                  id INT AUTO_INCREMENT PRIMARY KEY,
+                  name VARCHAR(255) NOT NULL,
+                  description TEXT,
+                  price DECIMAL(10, 2) NOT NULL,
+                  category VARCHAR(50),
+                  is_available BOOLEAN DEFAULT TRUE
 
-    require_once "databaseConnection.inc.php";
+);";
 
-    $stmt = $pdo->prepare($createTable);
-    $stmt->execute();
-
-    $pdo = null;
-    $stmt = null;
-
-    echo "Table created successfully";
-
-    die();
-
-} catch (PDOException $e) {
-    die("Query Failed: " . $e->getMessage());
-}
+$ordersTable ="CREATE TABLE orders (
+               id INT AUTO_INCREMENT PRIMARY KEY,
+               user_id INT,
+               order_date TIMESTAMP DEFAULT current_timestamp(),
+               total_amount DECIMAL(10, 2) NOT NULL,
+               status ENUM('pending', 'confirmed', 'to_be_delivered', 'completed', 'cancelled', 'invalid') DEFAULT 'pending',
+               FOREIGN KEY (user_id) REFERENCES users(id)
+);";
