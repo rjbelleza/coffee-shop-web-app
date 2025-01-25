@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+        
         if ($user) {
 
             if (password_verify($pwd, $user["pwd"])) {
